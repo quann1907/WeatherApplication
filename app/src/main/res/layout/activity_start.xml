@@ -57,27 +57,25 @@
         android:layout_marginHorizontal="39dp">
         <Button
             android:id="@+id/btnSearch"
-            android:layout_width="268dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Search"
             android:fontFamily="monospace"
             android:textColor="#054D73"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:background="@drawable/rounded">
-        </Button>
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
             android:background="@drawable/rounded"
-            android:layout_marginLeft="15dp"
-            android:gravity="center">
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:background="@drawable/location"
-                android:id="@+id/imgLocate">
-            </ImageView>
-        </LinearLayout>
+            android:layout_weight="1"
+            android:layout_marginRight="20dp">
+        </Button>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:padding="8dp"
+            android:src="@drawable/location"
+            android:id="@+id/imgLocate"
+            android:background="@drawable/rounded">
+        </ImageView>
     </LinearLayout>
 </LinearLayout>
