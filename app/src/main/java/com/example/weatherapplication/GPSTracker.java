@@ -1,6 +1,6 @@
 package com.example.weatherapplication;
 
-import android.Manifest;
+import  android.Manifest;
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
