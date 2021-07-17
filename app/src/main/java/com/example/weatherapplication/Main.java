@@ -33,7 +33,6 @@ public class Main extends AppCompatActivity {
     String city = null, longtitude, latitude;
     ViewPager vpgWeather;
     Button btnAdd;
-    List<String> weather = new ArrayList<>();
     List<Weather> weatherList = new ArrayList<>();
     WeatherAdapter weatherAdapter;
 
@@ -45,7 +44,6 @@ public class Main extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getStringExtra(CITY_KEY) != null){
             city = intent.getStringExtra(CITY_KEY);
-            weather.add(city);
             getWeatherByCityName(city);
         }
         if (intent.getStringExtra(COORD_LATITUDE_KEY) != null && intent.getStringExtra(COORD_LONGTITUDE_KEY) != null){
@@ -189,6 +187,5 @@ public class Main extends AppCompatActivity {
 
     public void addCity(String city){
         getWeatherByCityName(city);
-        weather.add(city);
     }
 }
