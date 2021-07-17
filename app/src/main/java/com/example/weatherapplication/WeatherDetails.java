@@ -77,10 +77,7 @@ public class WeatherDetails extends AppCompatActivity {
     }
 
     private void getWeatherHourly(String coord_lon, String coord_lat){
-        int i = 0;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        Log.e("",""+ i);
-        i++;
         String url_callAPI_weather_hourly = "https://api.openweathermap.org/data/2.5/forecast/?lat="+ coord_lat +"&lon="+ coord_lon +"&cnt=5&appid="+ API_KEY + "&units=metric";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url_callAPI_weather_hourly, null,
                 new Response.Listener<JSONObject>() {
@@ -124,10 +121,7 @@ public class WeatherDetails extends AppCompatActivity {
     }
 
     private void getWeatherDaily(String coord_lon, String coord_lat){
-        int i = 0;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        Log.e("",""+ i);
-        i++;
         String url_callAPI_weather_daily = "https://api.openweathermap.org/data/2.5/onecall?lat="+ coord_lat +"&lon="+ coord_lon +"&exclude=hourly,minutely&appid=" + API_KEY +"&units=metric";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url_callAPI_weather_daily, null,
                 new Response.Listener<JSONObject>() {

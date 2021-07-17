@@ -68,11 +68,8 @@ public class Main extends AppCompatActivity {
     }
 
     private void getWeatherByCityName(String city){
-        int i = 0;
         String url_callAPI_weather_byCityName = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&appid="+ API_KEY +"&units=metric";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        Log.e("",""+ i);
-        i++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url_callAPI_weather_byCityName, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -127,11 +124,8 @@ public class Main extends AppCompatActivity {
     }
 
     private void getWeatherByCoordinate(String coord_longtitude, String coord_latitude){
-        int i = 0;
         String url_callAPI_weather_byCoordinate = "https://api.openweathermap.org/data/2.5/weather?lat="+ coord_latitude +"&lon="+ coord_longtitude +"&appid="+ API_KEY +"&units=metric";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        Log.e("",""+ i);
-        i++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url_callAPI_weather_byCoordinate, null,
                 new Response.Listener<JSONObject>() {
                     @Override
