@@ -113,7 +113,7 @@ public class WeatherDetails extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(WeatherDetails.this, "Không có dữ liệu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WeatherDetails.this, "No data", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
@@ -179,7 +179,7 @@ public class WeatherDetails extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(WeatherDetails.this, "Không có dữ liệu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WeatherDetails.this, "No data", Toast.LENGTH_SHORT).show();
                     }
                 }
         );

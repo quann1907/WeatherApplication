@@ -115,7 +115,7 @@ public class Main extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Main.this, "Không có dữ liệu thành phố "+ city, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Main.this, "No data "+ city, Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 }
@@ -171,7 +171,7 @@ public class Main extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Main.this, "Không có dữ liệu thành phố "+ city, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Main.this, "No data", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 }
@@ -180,6 +180,57 @@ public class Main extends AppCompatActivity {
     }
 
     public void addCity(String city){
-        getWeatherByCityName(city);
+        String url_callAPI_weather_byCityName = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&appid="+ API_KEY +"&units=metric";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url_callAPI_weather_byCityName, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            int bcg;
+                            JSONObject coord = response.getJSONObject("coord");
+                            String coord_longtitude = coord.getString("lon");
+                            longtitude = coord_longtitude;
+                            String coord_latitude = coord.getString("lat");
+                            latitude = coord_latitude;
+                            JSONArray weatherArray = response.getJSONArray("weather");
+                            JSONObject weatherObject = weatherArray.getJSONObject(0);
+                            String desc = weatherObject.getString("description");
+                            String icon = weatherObject.getString("icon");
+                            String urlIcon = "https://openweathermap.org/img/wn/"+ icon +".png";
+
+                            JSONObject main = response.getJSONObject("main");
+                            String temp = main.getString("temp")+"°C";
+                            String humidity = main.getString("humidity");
+
+                            JSONObject wind = response.getJSONObject("wind");
+                            String speed = wind.getString("speed");
+
+                            JSONObject cloud = response.getJSONObject("clouds");
+                            String all = cloud.getString("all");
+
+                            String stringDate = response.getString("dt");
+                            Long longDate = Long.parseLong(stringDate);
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            Date date = new Date(longDate*1000);
+                            String currentDate = dateFormat.format(date);
+                            JSONObject sys = response.getJSONObject("sys");
+                            String ct = response.getString("name")+", "+ sys.getString("country");
+
+                            weatherList.add(new Weather(ct, currentDate, temp, desc, urlIcon, all, humidity, speed, coord_latitude, coord_longtitude));
+                            weatherAdapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Main.this, "Không có dữ liệu thành phố "+ city, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonObjectRequest);
     }
 }
