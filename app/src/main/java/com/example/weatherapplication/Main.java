@@ -227,7 +227,7 @@ public class Main extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Main.this, "Không có dữ liệu thành phố "+ city, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Main.this, "No data "+ city, Toast.LENGTH_SHORT).show();
                     }
                 }
         );
