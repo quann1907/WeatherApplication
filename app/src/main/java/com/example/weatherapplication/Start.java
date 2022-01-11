@@ -16,7 +16,7 @@ import static com.example.weatherapplication.Constant.*;
 public class Start extends AppCompatActivity {
     EditText edtCity;
     Button btnSearch;
-    ImageView imgAnimation, imgLocate;
+    ImageView imgAnimation, imgLocate ;
     GPSTracker gpsTracker;
 
     @Override
